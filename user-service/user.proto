@@ -16,7 +16,7 @@ message User {
   string deleted_at = 9;
   string access_token = 10;
   string refresh_token = 11;
-  string is_verified = 12;
+  bool is_verified = 12;
 }
 
 message CheckFieldReq {
