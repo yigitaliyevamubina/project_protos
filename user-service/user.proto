@@ -75,7 +75,9 @@ message LoginResp {
   User user = 1;
 }
 
-message Empty {}
+message Empty {
+  
+}
 
 service UserService {
   rpc CreateUser(User) returns (User) {}
