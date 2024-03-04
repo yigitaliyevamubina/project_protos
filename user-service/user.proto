@@ -16,7 +16,6 @@ message User {
   string deleted_at = 9;
   string access_token = 10;
   string refresh_token = 11;
-  bool is_verified = 12;
 }
 
 message CheckFieldReq {
@@ -32,23 +31,12 @@ message GetUserReqById {
   string user_id = 1;
 }
 
-message GetUserByEmailReq {
-  string email = 1;
+message ChangeUserPasswordReq {
+  string email = 1; 
+  string password = 2;
 }
 
-message GetUserByEmailResp {
-  User user = 1;
-}
-
-message ChangeUserPassword {
-  string user_id = 1;
-}
-
-message CheckEmailReq {
-  string email = 1;
-}
-
-message CheckEmailResp {
+message ChangeUserPasswordResp {
   bool status = 1;
 }
 
@@ -69,7 +57,6 @@ message ListUsersResp {
 
 message IfExistsReq {
   string email = 1;
-  string password = 2;
 }
 
 message IfExistsResp {
@@ -80,17 +67,23 @@ message Empty {
   
 }
 
-service UserService {
-  rpc CreateUser(User) returns (User) {}
-  rpc UpdateUser(User) returns (User) {}
-  rpc GetUserById(GetUserReqById) returns (User) {}
-  rpc GetUserByEmail(GetUserByEmailReq) returns (GetUserByEmailResp) {}
-  rpc GetAllUsers(ListUsersReq) returns (ListUsersResp) {}
-  rpc DeleteUser(DeleteUserReq) returns (google.protobuf.Empty) {}
-  rpc CheckEmail(CheckEmailReq) returns (CheckEmailResp) {}
-  rpc CheckField(CheckFieldReq) returns (CheckFieldResp) {}
-  rpc IfExists(IfExistsReq) returns (IfExistsResp) {}
+message UpdateRefreshTokenReq {
+  string user_id = 1;
+  string refresh_token = 2;
 }
 
+message UpdateRefreshTokenResp {
+  bool status = 1;
+}
 
-
+service UserService {
+  rpc CreateUser(User) returns (User) {};
+  rpc UpdateUser(User) returns (User) {};
+  rpc GetUserById(GetUserReqById) returns (User) {};
+  rpc GetAllUsers(ListUsersReq) returns (ListUsersResp) {};
+  rpc DeleteUser(DeleteUserReq) returns (google.protobuf.Empty) {};
+  rpc CheckField(CheckFieldReq) returns (CheckFieldResp) {};
+  rpc IfExists(IfExistsReq) returns (IfExistsResp) {};
+  rpc ChangePassword(ChangeUserPasswordReq) returns (ChangeUserPasswordResp) {};
+  rpc UpdateRefreshToken(UpdateRefreshTokenReq) returns (UpdateRefreshTokenResp) {};
+}
