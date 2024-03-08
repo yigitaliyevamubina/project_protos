@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+package healthcare;
+
+service HealthcareService {
+  rpc CheckUniques(CheckUniqReq) returns (Status);
+
+  rpc CreateDoctor(Doctor) returns (Doctor);
+  rpc GetDoctorById(GetReqStr) returns (Doctor);
+  rpc GetAllDoctors(GetAll) returns (ListDoctors);
+  rpc UpdateDoctor(Doctor) returns (Doctor);
+  rpc DeleteDoctor(GetReqStr) returns (Status);
+
+//  rpc CreateDoctorWorkingHours(Doctor_working_hours) returns (Status);
+//  rpc GetDWHById(GetReqInt) returns (Doctor_working_hours);
+//  rpc GetAllDWH(GetAll) returns (ListDWH);
+//  rpc UpdateDWH(Doctor_working_hours) returns (Doctor_working_hours);
+//  rpc DeleteDWH(GetReqInt) returns (Status);
+
+  rpc CreateDepartment(Department) returns (Department);
+  rpc GetDepartmentById(GetReqInt) returns (Department);
+  rpc GetAllDepartments(GetAll) returns (ListDepartments);
+  rpc UpdateDepartment(Department) returns (Department);
+  rpc DeleteDepartment(GetReqInt) returns (Status);
+
+  rpc CreateSpecialization(Specializations) returns (Specializations);
+  rpc GetSpecializationById(GetReqInt) returns (Specializations);
+  rpc GetAllSpecializations(GetAll) returns (ListSpecializations);
+  rpc UpdateSpecialization(Specializations) returns (Specializations);
+  rpc DeleteSpecialization(GetReqInt) returns (Status);
+
+  rpc CreateDocSpecPrices(DocSpecPrices) returns (DocSpecPrices);
+  rpc GetSpecPriceById(GetReqInt) returns (DocSpecPrices);
+  rpc GetAllSpecPrice(GetAll) returns (ListDoctorSpecPrice);
+  rpc UpdateSpecPrice(DocSpecPrices) returns (DocSpecPrices);
+  rpc DeleteSpecPrice(GetReqInt) returns (Status);
+}
+
+
+message CheckUniqReq {
+  string field = 1;
+  string value = 2;
+}
+
+message Doctor {
+  string id = 1;
+  string full_name = 2;
+  string birth_date = 3;
+  string gender = 4;
+  string phone_number = 5;
+  string email = 6;
+  string address = 7;
+  float salary = 8;
+  string biography = 9;
+  string start_work_year = 10;
+  string end_work_year = 11;
+  int64 work_years = 12;
+  int64 department_id = 13;
+  string refresh_token = 14;
+  string created_at = 15;
+  string updated_at = 16;
+  string deleted_at = 17;
+}
+
+message GetReqStr{
+  string id = 1;
+}
+
+message GetAll {
+  int64 page = 1;
+  int64 limit = 2;
+}
+
+message ListDoctors {
+  repeated Doctor doctors = 1;
+}
+
+message GetReqInt{
+  int64 id = 1;
+}
+
+message Department{
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  string come_time = 4;
+  string finish_time = 5;
+  string image_url = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+
+message ListDepartments {
+  repeated Department departments = 1;
+}
+
+//message Doctor_working_hours{
+//  string id = 1;
+//  string doctor_id = 2;
+//  string day_of_week = 3;
+//  string come_time = 4;
+//  string finish_time = 5;
+//}
+
+//message ListDWH {
+//  repeated Doctor_working_hours dwh = 1;
+//}
+
+message Specializations {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  int64 department_id = 4;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+
+message ListSpecializations {
+  repeated Specializations specializations = 1;
+}
+
+message DocSpecPrices {
+  int64 id = 1;
+  string doctor_id = 2;
+  int64 specialization_id = 3;
+  float online_price = 4;
+  float offline_price = 5;
+  string created_at = 6;
+  string updated_at = 7;
+  string deleted_at = 8;
+}
+
+message ListDoctorSpecPrice{
+  repeated DocSpecPrices prices = 1;
+}
+
+message Status {
+  bool status = 1;
+}
+
