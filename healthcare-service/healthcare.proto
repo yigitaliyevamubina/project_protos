@@ -34,8 +34,19 @@ service HealthcareService {
   rpc GetAllSpecPrice(GetAll) returns (ListDoctorSpecPrice);
   rpc UpdateSpecPrice(DocSpecPrices) returns (DocSpecPrices);
   rpc DeleteSpecPrice(GetReqInt) returns (Status);
+
+  rpc GetAllDoctorsByDepartmentId(GetReqInt) returns (ListDoctors);
+
+  rpc GetAllSpecByDepartmentIdWithPrices(GetReqInt) returns (ListSpecializations);
+
+  rpc Exists(Email) returns (Doctor);
+
+  rpc UpdateDoctorEmail(Doctor) returns (Doctor);
 }
 
+message Email {
+  string email = 1;
+}
 
 message CheckUniqReq {
   string field = 1;
@@ -45,21 +56,23 @@ message CheckUniqReq {
 message Doctor {
   string id = 1;
   string full_name = 2;
-  string birth_date = 3;
-  string gender = 4;
-  string phone_number = 5;
-  string email = 6;
-  string address = 7;
-  float salary = 8;
-  string biography = 9;
-  string start_work_year = 10;
-  string end_work_year = 11;
-  int64 work_years = 12;
-  int64 department_id = 13;
-  string refresh_token = 14;
-  string created_at = 15;
-  string updated_at = 16;
-  string deleted_at = 17;
+  string password = 3;
+  string birth_date = 4;
+  string gender = 5;
+  string phone_number = 6;
+  string email = 7;
+  string address = 8;
+  float salary = 9;
+  string biography = 10;
+  string start_work_year = 11;
+  string end_work_year = 12;
+  int64 work_years = 13;
+  int64 department_id = 14;
+  string refresh_token = 15;
+  string created_at = 16;
+  string updated_at = 17;
+  string deleted_at = 18;
+  repeated string spec_ids = 19;
 }
 
 message GetReqStr{
@@ -139,4 +152,3 @@ message ListDoctorSpecPrice{
 message Status {
   bool status = 1;
 }
-
