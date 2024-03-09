@@ -106,7 +106,8 @@ message Department{
 }
 
 message ListDepartments {
-  repeated Department departments = 1;
+  int64 count = 1;
+  repeated Department departments = 2;
 }
 
 //message Doctor_working_hours{
@@ -132,7 +133,8 @@ message Specializations {
 }
 
 message ListSpecializations {
-  repeated Specializations specializations = 1;
+  int64 count = 1;
+  repeated Specializations specializations = 2;
 }
 
 message DocSpecPrices {
@@ -147,7 +149,8 @@ message DocSpecPrices {
 }
 
 message ListDoctorSpecPrice{
-  repeated DocSpecPrices prices = 1;
+  int64 count = 1;
+  repeated DocSpecPrices prices = 2;
 }
 
 message Status {
