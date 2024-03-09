@@ -72,7 +72,7 @@ message Doctor {
   string created_at = 16;
   string updated_at = 17;
   string deleted_at = 18;
-  repeated string spec_ids = 19;
+  repeated int64 spec_ids = 19;
 }
 
 message GetReqStr{
