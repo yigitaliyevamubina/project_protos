@@ -37,7 +37,7 @@ service HealthcareService {
 
   rpc GetAllDoctorsByDepartmentId(GetRequest) returns (ListDoctors);
 
-  rpc GetAllSpecByDepartmentIdWithPrices(GetRequest) returns (ListSpecializations);
+  rpc GetAllSpecByDepartmentIdWithPrices(GetRequest) returns (ListSpecializationsWithPrices);
 
   rpc Exists(Email) returns (Doctor);
 
