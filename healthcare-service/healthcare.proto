@@ -138,9 +138,21 @@ message Specializations {
   string deleted_at = 9;
 }
 
+message SpecializationsWithPrices {
+  int64 id = 1;
+  string name = 2;
+  string description = 3;
+  int64 department_id = 4;
+  float online_price = 5;
+  float offline_price = 6;
+  string created_at = 7;
+  string updated_at = 8;
+  string deleted_at = 9;
+}
+
 message ListSpecializations {
   int64 count = 1;
-  repeated Specializations specializations = 2;
+  repeated SpecializationsWithPrices specializations = 2;
 }
 
 message DocSpecPrices {
