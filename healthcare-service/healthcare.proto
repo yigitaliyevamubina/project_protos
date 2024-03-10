@@ -35,13 +35,19 @@ service HealthcareService {
   rpc UpdateSpecPrice(DocSpecPrices) returns (DocSpecPrices);
   rpc DeleteSpecPrice(GetReqInt) returns (Status);
 
-  rpc GetAllDoctorsByDepartmentId(GetReqInt) returns (ListDoctors);
+  rpc GetAllDoctorsByDepartmentId(GetRequest) returns (ListDoctors);
 
   rpc GetAllSpecByDepartmentIdWithPrices(GetReqInt) returns (ListSpecializations);
 
   rpc Exists(Email) returns (Doctor);
 
   rpc UpdateDoctorEmail(Doctor) returns (Doctor);
+}
+
+message GetRequest {
+  int64 page = 1;
+  int64 limit = 2;
+  int64 id = 3;
 }
 
 message Email {
