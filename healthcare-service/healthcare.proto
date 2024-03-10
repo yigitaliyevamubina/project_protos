@@ -41,6 +41,8 @@ service HealthcareService {
 
   rpc Exists(Email) returns (Doctor);
 
+  rpc IsVerified(CheckUniqReq) returns (Status);
+
   rpc UpdateDoctorEmail(Doctor) returns (Doctor);
 }
 
