@@ -150,9 +150,14 @@ message SpecializationsWithPrices {
   string deleted_at = 9;
 }
 
-message ListSpecializations {
+message ListSpecializationsWithPrices {
   int64 count = 1;
   repeated SpecializationsWithPrices specializations = 2;
+}
+
+message ListSpecializations {
+  int64 count = 1;
+  repeated Specializations specializations = 2;
 }
 
 message DocSpecPrices {
