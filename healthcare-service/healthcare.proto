@@ -79,6 +79,7 @@ message Doctor {
   string updated_at = 17;
   string deleted_at = 18;
   repeated int64 spec_ids = 19;
+  bool is_verified = 20;
 }
 
 message GetReqStr{
